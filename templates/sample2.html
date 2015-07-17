@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>DBMS 이용 샘플 2</h1>
+    <form method="post" action="/2/">
+        {%csrf_token%}
+        <div><label>아이디</label> : <input type="text" name='user_id' style="width: 100px"/></div>
+        <div><label>이름</label> : <input type="text" name='user_name' style="width: 100px"/></div>
+        <div><label>이메일</label> : <input type="text" name='email' style="width: 100px"/></div>
+        <div><label>비밀번호</label> : <input type="text" name='password' style="width: 100px"/></div>
+        <div><input type="submit" value="등록"/></div>
+    </form>
+    {% if rows %}
+        <table>
+            <tr>
+                <th>
+                    번호
+                </th>
+                <th>
+                    이름
+                </th>
+                <th>
+                    아이
+                </th>
+                <th>
+                    이메일
+                </th>
+            </tr>
+        {% for row in rows %}
+            <tr>
+                <td>
+                    {{row.0}}
+                </td>
+                <td>
+                    {{row.2}}
+                </td>
+                <td>
+                    {{row.1}}
+                </td>
+                <td>
+                    {{row.3}}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

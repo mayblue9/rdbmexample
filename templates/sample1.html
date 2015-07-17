@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>DBMS 이용 샘플 1</h1>
+    {% if method == 'GET' %}
+        <form method="post" action="?">
+            {%csrf_token%}
+            <label>쿼리를 넣으세요.</label><textarea  name="q" style="width: 400px"></textarea>
+            <div><input type="submit" value="등록"/></div>
+        </form>
+    {% else %}
+        {% if rows %}
+        <table>
+            <tr>
+                <th>
+                    번호
+                </th>
+                <th>
+                    이름
+                </th>
+                <th>
+                    생년월일
+                </th>
+                <th>
+                    이메일
+                </th>
+            </tr>
+        {% for row in rows %}
+            <tr>
+                <td>
+                    {{row.0}}
+                </td>
+                <td>
+                    {{row.1}}
+                </td>
+                <td>
+                    {{row.2}}
+                </td>
+                <td>
+                    {{row.3}}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+            처리되었습니다.
+        {% endif %}
+
+
+    {% endif %}
+</body>
+</html>
